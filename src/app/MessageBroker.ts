@@ -10,6 +10,7 @@ export interface ConsumerDelegate{
 export class MessageBroker {
 
     private sessionId: string;
+    // Client will take 
     private client: any = undefined;
 
     private server: StompServer;

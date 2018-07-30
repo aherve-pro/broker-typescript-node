@@ -1,7 +1,5 @@
 import * as Stomp from "stomp-client";
 
-
-
 export class StompServer {
 
     private address: string;
