@@ -34,12 +34,6 @@ CREATE UNIQUE INDEX sku_wid_idx ON stock(sku,wid);
 
 Start activemq locally. It has to serve on `127.0.0.1` on port `61613`.
 
-## Start message production
-
-```
-ts-node produce
-```
-This command produce a message on __topic__ stock/change
 
 ## Start message consumption
 
@@ -48,15 +42,21 @@ ts-node consume
 ```
 This command consume all message on __topic__ stock/Change and show Message on console.
 
+Important : Consumer is able to process previous message only if the consumer has been connected at least once to ActiveMQ
 
-
-# Post a message with ActiveMQ Rest API : 
+## Post a message with ActiveMQ Rest API : 
 ```
 curl -d '
     <abc:request>
         <abc:actions>
             <abc:item sku="12345" wid="ABC" qty="3"/>
         </abc:actions>
-    <abc:request>
+    </abc:request>
 '  -H "Content-Type: application/xml" -u admin:admin -X POST http://127.0.0.1:8161/api/message?destination=topic://stock/change
 ```
+
+## Access to ActiveMQ console for Topic
+```
+http://localhost:8161/admin/topics.jsp
+```
+
