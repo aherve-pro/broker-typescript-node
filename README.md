@@ -20,6 +20,8 @@ npm install
 
 ## Create MySQL table 
 ```
+Create a database poc_bg with user/pass poc_bg/poc_bg
+
 CREATE TABLE stock (
   jsonDetails JSON,
   sku VARCHAR(255) GENERATED ALWAYS AS (jsonDetails->>"$.sku") NOT NULL, 
